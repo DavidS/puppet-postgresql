@@ -24,7 +24,7 @@ class postgresql::params {
   }
 
   $config_file_hba = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/etc/postgresql/8.4/main/pg_hba.conf',
+    /(?i:Debian|Ubuntu|Mint)/ => '/etc/postgresql/9.1/main/pg_hba.conf',
     default => '/var/lib/pgsql/data/pg_hba.conf',
   }
 
@@ -34,7 +34,7 @@ class postgresql::params {
   ### Application related parameters
 
   $package = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/       => 'postgresql-8.4',
+    /(?i:Debian|Ubuntu|Mint)/       => 'postgresql-9.1',
     /(?i:RedHat|Centos|Scientific)/ => $osver ? {
       5       => 'postgresql84-server',
       default => 'postgresql-server',
@@ -46,7 +46,7 @@ class postgresql::params {
     /(?i:Debian|Mint)/        => 'postgresql',
     /(?i:Ubuntu)/             => $::operatingsystemrelease ? {
       '12.04' => 'postgresql',
-      default => 'postgresql-8.4',
+      default => 'postgresql-9.1',
     },
     default                   => 'postgresql',
   }
@@ -69,12 +69,12 @@ class postgresql::params {
   }
 
   $config_dir = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/etc/postgresql/8.4/main',
+    /(?i:Debian|Ubuntu|Mint)/ => '/etc/postgresql/9.1/main',
     default                   => '/var/lib/pgsql/data',
   }
 
   $config_file = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/etc/postgresql/8.4/main/postgresql.conf',
+    /(?i:Debian|Ubuntu|Mint)/ => '/etc/postgresql/9.1/main/postgresql.conf',
     default                   => '/var/lib/pgsql/data/postgresql.conf',
   }
 
@@ -96,12 +96,12 @@ class postgresql::params {
   }
 
   $pid_file = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/var/run/postgresql/8.4-main.pid',
+    /(?i:Debian|Ubuntu|Mint)/ => '/var/run/postgresql/9.1-main.pid',
     default                   => '/var/lib/pgsql/data/postmaster.pid',
   }
 
   $data_dir = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/var/lib/postgresql/8.4/main',
+    /(?i:Debian|Ubuntu|Mint)/ => '/var/lib/postgresql/9.1/main',
     default                   => '/var/lib/pgsql',
   }
 
@@ -111,7 +111,7 @@ class postgresql::params {
   }
 
   $log_file = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/       => '/var/log/postgresql/postgresql-8.4-main.log',
+    /(?i:Debian|Ubuntu|Mint)/       => '/var/log/postgresql/postgresql-9.1-main.log',
     /(?i:RedHat|Centos|Scientific)/ => '/var/lib/pgsql/data/pg_log/postgresql*.log',
     default                         => '/var/lib/pgsql/data/pg_log/postgresql*.log',
   }
